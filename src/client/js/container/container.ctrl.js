@@ -3,7 +3,7 @@
       .module('divkick.container', [])
       .controller('ContainerCtrl', ContainerCtrl)
   /* @ngInject */
-  function ContainerCtrl($firebaseArray ) {
+  function ContainerCtrl( ) {
     /* jshint validthis: true */
     var main = this;
    

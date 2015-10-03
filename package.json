@@ -2,10 +2,10 @@
   "name": "l10n-local-content-match",
   "version": "1.0.0",
   "description": "Compare names of files to match a directory structure application",
-  "main": "src/server/index.js",
+  "main": "src/client/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server --open='src/client'"
+    "start": "nw"
   },
   "repository": {
     "type": "git",
