@@ -19,7 +19,7 @@ const compress = {
         mangle: true,
     }
 }
-gulp.task('watch', ['tmp.js'], () => {
+gulp.task('watch', ['usemin'], () => {
     gulp.watch(CONST.tmp.src, ['tmp.js']);
 });
 
