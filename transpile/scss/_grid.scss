@@ -1,0 +1,58 @@
+//helpers
+.float-left {
+  float: left;
+  position: relative;
+}
+.pos-r {
+  position: relative;
+}
+.tall {
+  height: 100%;
+}
+.full-screen {
+  @extend .pos-r;
+  @extend .tall;
+  @extend .group;
+  width: 100%;
+}
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.parent-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+//grid
+
+.grid-left-major {
+  width: 60%;
+  @extend .tall;
+  @extend .float-left;
+  background-color: $gray;
+
+}
+.grid-right-major {
+  width: 40%;
+  @extend .float-left;
+}
+
+.main-container {
+  @extend .full-screen;
+  padding: 36px;
+}
+.inner-main-container {
+  @extend .full-screen;
+  @extend .tall;
+}
+.inner-pane {
+  width: 50%;
+  float: left;
+  padding: 16px;
+  @extend .tall;
+}
+

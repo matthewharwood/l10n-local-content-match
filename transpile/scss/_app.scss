@@ -1,0 +1,26 @@
+html, body {
+  @extend .full-screen;
+}
+
+#needle-pane {
+  @extend .inner-pane;
+
+}
+#haystack-pane {
+  @extend .inner-pane;
+}
+.drag-info {
+  width: 50%;
+  text-align: center;
+
+  margin: 0 auto;
+  img {
+    margin-bottom: 36px;
+    width: 100%;
+  }
+  h2 {
+    font-size: $h2-size;
+    color: $type-gray;
+    font-family: $mono-typeface;
+  }
+}

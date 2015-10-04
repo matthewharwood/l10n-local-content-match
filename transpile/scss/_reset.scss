@@ -45,7 +45,10 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
-html{
-  background-color: orange;
-
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  vertical-align: middle;
 }

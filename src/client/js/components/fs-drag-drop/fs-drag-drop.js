@@ -15,6 +15,7 @@
 
       el.bind('drop', function (e) {
         e.preventDefault();
+
         for (var i = 0; i < e.dataTransfer.files.length; ++i) {
           console.log(e.dataTransfer.files[i].path);
         }
@@ -22,7 +23,14 @@
       });
       el.bind('dragenter', function (e) {
         el.addClass('hover');
-        console.log('hovered');
+        var file = e.dataTransfer.files[0],
+            reader = new FileReader();
+        reader.onload = function (event) {
+          console.log(event.target);
+        };
+        console.log(file);
+        reader.readAsDataURL(file);
+
         return false;
       });
       el.bind('dragleave', function (e) {
@@ -34,7 +42,12 @@
 
     return {
       restrict: 'A',
-      link: link
+      link: link,
+      templateUrl: './js/components/fs-drag-drop/fs-drag-drop.html',
+      scope: {
+        'dropName': '@',
+        'dropData': '&'
+      }
     };
   };
 })();
