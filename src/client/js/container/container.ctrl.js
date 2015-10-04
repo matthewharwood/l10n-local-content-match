@@ -2,6 +2,8 @@
   angular
       .module('divkick.container', [])
       .controller('ContainerCtrl', ContainerCtrl)
+
+
   /* @ngInject */
   function ContainerCtrl( ) {
     /* jshint validthis: true */
