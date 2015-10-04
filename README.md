@@ -24,3 +24,7 @@ How to build nwjs
 - cd into build folder
 - run `npm i`
 - run `grunt nwjs`
+
+
+How to run watchers for css
+- run `gulp sass:watch`

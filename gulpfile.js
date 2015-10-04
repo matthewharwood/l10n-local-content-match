@@ -19,16 +19,23 @@ const compress = {
     options: {
         mangle: true,
     }
-}
+};
+const transpile = {
+  scss: {
+    src: './transpile/scss/main.scss',
+    watch: './transpile/scss/**/*.scss',
+    output: './src/client/css/'
+  }
+};
 
 gulp.task('sass', function () {
-  gulp.src('./src/client/scss/**/*.scss')
+  gulp.src(transpile.scss.src)
       .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest('./src/client/css/'));
+      .pipe(gulp.dest(transpile.scss.output));
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./src/client/scss/**/*.scss', ['sass']);
+  gulp.watch(transpile.scss.watch, ['sass']);
 });
 
 gulp.task('usemin', function() {
