@@ -13,6 +13,9 @@ Install some globals.
 - npm i gulp -g
 - npm i bower -g
 - npm i live-reload -g
+- npm install nw -g 
+
+! Restart terminal
 
 Go to root:
 - npm i
