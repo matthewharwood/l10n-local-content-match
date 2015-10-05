@@ -24,3 +24,18 @@ html, body {
     font-family: $mono-typeface;
   }
 }
+
+.fs-compare-btn {
+  position: fixed;
+  z-index: 100;
+  bottom: 10%;
+  right:10%;
+  .action-btn-round {
+    width: 50px;
+    height: 50px;
+    background: $primary-red;
+    border-radius: 100px;
+    border: 2px #fff solid;
+    box-shadow: 3px 3px 15px #ccc;
+  }
+}

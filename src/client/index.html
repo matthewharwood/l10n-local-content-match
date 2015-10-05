@@ -9,26 +9,43 @@
 <div class="main-container" ng-controller="ContainerCtrl as container">
     <div class="inner-main-container">
         <div class="grid-left-major">
-            <div id="needle-pane" class="parent-c" fs-drag-drop drop-name="Needle" drop-data="container.add()"></div>
             <div id="haystack-pane" class="parent-c"  fs-drag-drop  drop-name="Haystack" drop-data="container.add()"></div>
+            <div id="needle-pane" class="parent-c" fs-drag-drop drop-name="Needle" drop-data="container.add()"></div>
         </div>
         <div class="grid-right-major">
             {{ container.title }}
+            <div fs-compare-btn class="fs-compare-btn"></div>
         </div>
     </div>
 </div>
     <script>
-        window.ondragover = function(e) { e.preventDefault();
-            console.log('e.dataTransfer.files.length', e.dataTransfer.files.length);
+        String.prototype.regexLastIndexOf = function(regex, startpos) {
+            regex = (regex.global) ? regex : new RegExp(regex.source, "g" + (regex.ignoreCase ? "i" : "") + (regex.multiLine ? "m" : ""));
+            if(typeof (startpos) == "undefined") {
+                startpos = this.length;
+            } else if(startpos < 0) {
+                startpos = 0;
+            }
+            var stringToWorkWith = this.substring(0, startpos + 1);
+            var lastIndexOf = -1;
+            var nextStop = 0;
+            while((result = regex.exec(stringToWorkWith)) != null) {
+                lastIndexOf = result.index;
+                regex.lastIndex = ++nextStop;
+            }
+            return lastIndexOf;
+        }
 
-            return false };
-//        window.ondrop = function(e) { e.preventDefault(); return false };
+        window.ondragover = function(e) { e.preventDefault(); return false };
+        window.ondrop = function(e) { e.preventDefault(); return false };
     </script>
 	<!-- build:js js/app.js -->
     <script src="../../bower_components/angular/angular.min.js"></script>
 	<script src="./js/app.js"></script>
     <script src="./js/container/container.ctrl.js"></script>
     <script src="./js/components/fs-drag-drop/fs-drag-drop.js"></script>
+    <script src="./js/components/fs-compare-btn/fs-compare-btn.js"></script>
+    <script src="./js/services/file-traversal.js"></script>
 	<!-- endbuild -->
 </body>
 </html>

@@ -1,23 +1,30 @@
 (function () {
+  'use strict';
   angular
       .module('divkick.container', [])
       .controller('ContainerCtrl', ContainerCtrl)
 
-
+  ContainerCtrl.$inject = ['FileTraversal', '$scope', '$timeout'];
   /* @ngInject */
-  function ContainerCtrl( ) {
+  function ContainerCtrl(FileTraversal, $scope, $timeout) {
     /* jshint validthis: true */
     var main = this;
-   
-    //
-    main.title = 'div kick';
-
     activate();
 
     ////////////////
 
     function activate() {
-      console.log(main.title)
+      $scope.$watchCollection(function () {
+        return FileTraversal.stuff;
+      }, function (newValue, oldValue) {
+        console.log("check")
+        if (newValue !== oldValue) {
+
+          console.log(newValue);
+        } else {
+          console.log('nope');
+        }
+      });
     }
   }
 })();

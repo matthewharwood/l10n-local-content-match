@@ -1,8 +1,9 @@
 (function () {
   "use strict";
   angular.module('divkick', [
-      'divkick.components',
-      'divkick.container'
+    'divkick.services',
+    'divkick.components',
+    'divkick.container'
   ]);
 })();
 
