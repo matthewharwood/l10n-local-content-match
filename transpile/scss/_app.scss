@@ -23,6 +23,11 @@ html, body {
     color: $type-gray;
     font-family: $mono-typeface;
   }
+  h4 {
+    font-size: $h4-size;
+    color: $type-gray;
+    font-family: $mono-typeface;
+  }
 }
 
 .fs-compare-btn {

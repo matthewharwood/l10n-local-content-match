@@ -13,14 +13,17 @@ Install some globals.
 - npm i gulp -g
 - npm i bower -g
 - npm i live-reload -g
-- npm install nw -g 
+- npm install nw -g
+- brew install imagemagick
+
 
 ! Restart terminal
 
 Go to root:
 - npm i
 - bower i
-- node start
+- gulp sass:watch
+- npm start
 
 How to build nwjs
 - run `gulp build`
@@ -31,3 +34,8 @@ How to build nwjs
 
 How to run watchers for css
 - run `gulp sass:watch`
+
+**NOTES:**
+----------
+
+Locales Regex must be set in the service file-traversal

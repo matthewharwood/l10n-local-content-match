@@ -12,11 +12,11 @@
   dragAndDrop.$inject = ['FileTraversal'];
   function dragAndDrop(FileTraversal) {
 
-    function link(scope, el) {
+    function link(scope, el, attrs) {
 
       el.bind('drop', function (e) {
         e.preventDefault();
-        FileTraversal.check(e.dataTransfer.files[0].path, scope.dropName);
+        FileTraversal[scope.dropName](e.dataTransfer.files[0].path, scope.dropName);
         return false;
       });
       el.bind('dragenter', function (e) {

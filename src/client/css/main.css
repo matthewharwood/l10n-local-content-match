@@ -49,14 +49,14 @@ img {
   position: relative;
   vertical-align: middle; }
 
-.float-left, .grid-left-major, .grid-right-major {
+.float-left, .row, .grid-left-major, .grid-right-major {
   float: left;
   position: relative; }
 
 .pos-r, .full-screen, .main-container, .inner-main-container, html, body {
   position: relative; }
 
-.tall, .full-screen, .main-container, .inner-main-container, html, body, .grid-left-major, .inner-pane, #needle-pane, #haystack-pane {
+.tall, .full-screen, .main-container, .inner-main-container, html, body, .row, .grid-left-major, .inner-pane, #needle-pane, #haystack-pane {
   height: 100%; }
 
 .full-screen, .main-container, .inner-main-container, html, body {
@@ -71,6 +71,10 @@ img {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.row {
+  width: 100%;
+  background-color: #D8D8D8; }
 
 .grid-left-major {
   width: 60%;
@@ -96,6 +100,10 @@ img {
     width: 100%; }
   .drag-info h2 {
     font-size: 36px;
+    color: rgba(101, 101, 101, 0.57);
+    font-family: "Andale Mono", monospace; }
+  .drag-info h4 {
+    font-size: 16px;
     color: rgba(101, 101, 101, 0.57);
     font-family: "Andale Mono", monospace; }
 

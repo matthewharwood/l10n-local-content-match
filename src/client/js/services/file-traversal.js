@@ -2,6 +2,9 @@
   "use strict";
   var fs = require('fs');
   var glob = require("glob");
+  var gm = require('gm').subClass({imageMagick: true});
+  var fs = require('fs');
+
   angular
       .module('divkick.services', [])
       .factory('FileTraversal', FileTraversal);
@@ -11,7 +14,11 @@
   function FileTraversal() {
     var service = {
       stuff: {},
-      check: check
+      Needle: check,
+      Haystack: check,
+      Base: resize,
+      Refactor: resize,
+      resize: resize
     };
     var locale = [
       /ALL_bg/g,
@@ -89,6 +96,81 @@
           });
           console.log(service.stuff.Haystack)
         }
+
+      });
+    }
+
+    function resize(filePath, name) {
+      glob(filePath + '/**/*{.png,.jpg,.gif}', function (er, files) {
+        if (er) return er;
+          service.stuff[name] = files.map(function (entry, i) {
+
+            return {
+              path: entry,
+              name: getImageName(),
+              ext: getImageExt(),
+              identity: getIdentity(),
+              idx: i
+            };
+
+            function getImageName() {
+              var splitPath = entry.split('/');
+              return splitPath[splitPath.length - 1];
+            }
+
+            function getImageExt() {
+              var splitPath = entry.split('/');
+              var imagePath = splitPath[splitPath.length - 1];
+              var imageExtensionArr = imagePath.split('.');
+              return imageExtensionArr[imageExtensionArr.length - 1];
+            }
+
+            function getIdentity() {
+              var tempGM = gm(entry)
+                  .identify(function (err, data) {
+                      return data.size
+                  })
+              return tempGM.data;
+            }
+            gm(entry)
+                  .resize(240, 240)
+                  .noProfile()
+                  .write(entry, function (err) {
+                    if (!err) console.log('done');
+                  });
+
+          });
+          console.log(service.stuff);
+        //if (name === 'Refactor') {
+        //  service.stuff.Refactor = files.map(function (entry) {
+        //    for (var i = 0; i < locale.length; ++i) {
+        //      var testEntry = entry.regexLastIndexOf(locale[i]);
+        //      if (testEntry >= 0) {
+        //        var newEntry = testEntry;
+        //        console.log(newEntry);
+        //      }
+        //    }
+        //    var sliceEntry = entry.slice(newEntry)
+        //    var fileArr = sliceEntry.split('/');
+        //    var newFileArr = {
+        //      locale: fileArr[0],
+        //      path: ''
+        //    };
+        //    fileArr.shift();
+        //    newFileArr.path = fileArr.join('/');
+        //    return newFileArr;
+        //  });
+        //  console.log(service.stuff);
+        //} else {
+        //  service.stuff.Base = files.map(function (entry) {
+        //    var newEntry = entry.regexLastIndexOf(/images/g);
+        //    var sliceEntry = entry.slice(newEntry)
+        //    var fileArr = sliceEntry.split('/');
+        //    fileArr.shift();
+        //    return fileArr.join('/');
+        //  });
+        //  console.log(service.stuff.Base)
+        //}
 
       });
     }

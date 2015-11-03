@@ -28,7 +28,13 @@
 
 
 //grid
+.row {
+  width: 100%;
+  @extend .tall;
+  @extend .float-left;
+  background-color: $gray;
 
+}
 .grid-left-major {
   width: 60%;
   @extend .tall;
